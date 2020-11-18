@@ -1,0 +1,7 @@
+#buttons-bar-container{
+    display: flex;
+    justify-content: flex-end;
+}
+.button-link{
+    color:#fff !important;
+}

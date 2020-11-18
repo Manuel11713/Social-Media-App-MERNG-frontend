@@ -1,0 +1,20 @@
+.container-home{
+    padding: 50px 200px;
+}
+.grid-home{
+    padding: 50px;
+    border-radius: 20px;
+    background: #ffffff;
+}
+.img-home{
+    width: 100%;
+}
+.register-home{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.link-to-register{
+    color: #ffffff;
+    text-decoration: none;
+}

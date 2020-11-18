@@ -1,0 +1,21 @@
+#register-container{
+    display: flex;
+    justify-content: center;
+}
+
+#form-register-container{
+    width: 400px;
+    padding:40px;
+    margin-top: 40px;
+    border-radius: 15px;
+    background: #fff;
+}
+
+.textfield-register{
+    width: 100%;
+    margin-bottom: 30px !important;
+}
+
+.submit-register{
+    width: 100%;
+}
