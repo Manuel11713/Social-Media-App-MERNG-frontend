@@ -7,6 +7,8 @@ import {gql, useMutation} from '@apollo/client';
 //Views 
 import Home from './Views/Home/Home';
 import Register from './Views/Register/Register';
+import Login from './Views/Login/Login';
+import Feed from './Views/Feed/Feed';
 
 
 const VERIFYTOKEN_MUTATION = gql`
@@ -26,6 +28,7 @@ const Router = ({user, setUser}) => {
 
     useEffect(()=>{
         let fetchData = async () => {
+            if(!token) return;
             let {data} = await verifyToken({variables:{token}});
             setUser(data.verifyToken);
         };
@@ -36,9 +39,17 @@ const Router = ({user, setUser}) => {
         <BrowserRouter>
             <Switch>
                 <Route exact path="/">
-                    {!user ? <Redirect to="/feed" /> : <Home/>}
+                    {user ? <Redirect to="/feed" /> : <Home/>}
                 </Route>
-                <Route exact path="/regist  er" component={Register}/>
+                <Route exact path="/login" >
+                    {user ? <Redirect to="/feed" /> : <Login/>}
+                </Route>
+                <Route exact path="/register" >
+                    {user ? <Redirect to="/feed" /> : <Register/>}
+                </Route>
+                <Route exact path="/feed">
+                    {user ? <Feed/> : <Home/>}
+                </Route>
             </Switch>
         </BrowserRouter>
     );

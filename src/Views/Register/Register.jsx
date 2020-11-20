@@ -61,7 +61,7 @@ const Register = ({setUser}) => {
                 <Typography variant="h4" style={{textAlign:'center'}}>Register</Typography>
                 <form onSubmit={handleSubmit}>
                     <TextField className="textfield-register" label="username" onChange={(e)=>setUsername(e.currentTarget.value)}/>
-                    <TextField className="textfield-register" label="email" onChange={(e)=>setEmail(e.currentTarget.value)}/>
+                    <TextField className="textfield-register" type="email" label="email" onChange={(e)=>setEmail(e.currentTarget.value)}/>
                     <TextField className="textfield-register" type="password" label="password" onChange={(e)=>setPassword(e.currentTarget.value)}/>
                     <TextField
                         label="birthday"
