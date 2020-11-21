@@ -9,7 +9,7 @@ import Home from './Views/Home/Home';
 import Register from './Views/Register/Register';
 import Login from './Views/Login/Login';
 import Feed from './Views/Feed/Feed';
-
+import Profile from './Views/Profile/Profile';
 
 const VERIFYTOKEN_MUTATION = gql`
     mutation VerifyToken($token:String){
@@ -46,6 +46,9 @@ const Router = ({user, setUser}) => {
                 </Route>
                 <Route exact path="/register" >
                     {user ? <Redirect to="/feed" /> : <Register/>}
+                </Route>
+                <Route exact path="/profile/:username">
+                    {user ? <Profile/> : <Home/>}
                 </Route>
                 <Route exact path="/feed">
                     {user ? <Feed/> : <Home/>}

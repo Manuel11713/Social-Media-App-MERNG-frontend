@@ -1,0 +1,11 @@
+.post-card{
+    margin-bottom: 20px;
+}
+.post-avatar{
+    color: grey;
+}
+
+.card-actions-post{
+    display: flex;
+    justify-content: space-between;
+}

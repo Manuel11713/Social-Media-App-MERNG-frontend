@@ -1,11 +1,13 @@
 import React,{useState} from 'react';
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import {AppBar, Button,Menu, MenuItem, Toolbar} from '@material-ui/core';
 
 import './HeaderBar.css';
 
-const HeaderBar = () => {
+const HeaderBar = ({user}) => {
     const [anchorMenu, setAnchorMenu] = useState(null);
 
     const handleClick = (event) => {
@@ -15,6 +17,7 @@ const HeaderBar = () => {
     const handleClose = () => {
       setAnchorMenu(null);
     };
+    
     return(
         <header>
             <AppBar position="static">
@@ -32,7 +35,9 @@ const HeaderBar = () => {
                 open={Boolean(anchorMenu)}
                 onClose={handleClose}
                 >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>
+                    <Link to={`profile/${user.username.replace(/\s+/g,'-')}`} >Profile</Link>
+                </MenuItem>
                 <MenuItem onClick={handleClose}>Settings</MenuItem>
                 <MenuItem onClick={handleClose}>Logout</MenuItem>
             </Menu>
@@ -40,5 +45,10 @@ const HeaderBar = () => {
     );
 }
 
+const stateToProps = state => {
+    return({
+        user:state.user
+    });
+}
 
-export default HeaderBar;
+export default connect(stateToProps, null)(HeaderBar);
