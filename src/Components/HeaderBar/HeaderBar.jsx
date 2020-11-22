@@ -3,7 +3,10 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import HomeIcon from '@material-ui/icons/Home';
 import {AppBar, Button,Menu, MenuItem, Toolbar} from '@material-ui/core';
+
+import SearchBar from './Components/SearchBar/SearchBar';
 
 import './HeaderBar.css';
 
@@ -22,6 +25,12 @@ const HeaderBar = ({user}) => {
         <header>
             <AppBar position="static">
                 <Toolbar className="toolbar-header">
+                    <Link to='/feed'>
+                        <Button className="profile-button">
+                            <HomeIcon style={{fontSize:40}}/>
+                        </Button>
+                    </Link>
+                    <SearchBar/>
                     <Button className="profile-button" onClick={handleClick}>
                         <AccountCircleIcon style={{fontSize:40}}/>
                     </Button>

@@ -1,0 +1,52 @@
+.searchbar-container{
+    display: flex;
+    width: 300px;
+    background: #7986cb;
+    border-radius: 5px;
+    padding: 3px;
+
+    position: relative;
+}
+
+.inputSearch{
+    color: #fff !important;
+}
+
+.users-list{
+    position: absolute;
+    top: 40px;
+    max-height: 300px;
+    width: 100%;
+
+    overflow-y: scroll;
+}
+.item-user{
+    padding: 15px;
+    border-bottom: 1px solid #cfd8dc;
+    background: #fff;
+    color:#000
+}
+
+
+/*Scroll bar for .users-list*/
+/* width */
+.users-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+.users-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+.users-list::-webkit-scrollbar-thumb {
+    background: #90a4ae; 
+    border-radius: 2px;
+
+}
+
+/* Handle on hover */
+.users-list::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
