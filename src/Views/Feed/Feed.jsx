@@ -1,8 +1,7 @@
 import React from 'react';
 
-
-
 import HeaderBar from '../../Components/HeaderBar/HeaderBar';
+import Chat from '../../Components/Chat/Chat';
 import NewPost from './Components/NewPost/NewPost';
 
 const Feed = () => {
@@ -10,6 +9,8 @@ const Feed = () => {
         <div>
             <HeaderBar/>
             <NewPost/>
+
+            <Chat/>
         </div>
     );
 }

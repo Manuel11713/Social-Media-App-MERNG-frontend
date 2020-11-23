@@ -1,0 +1,62 @@
+#chat-container{
+    background: #fff;
+    width: 300px;
+    bottom: 0px;
+    right: 10px;
+
+    border-radius: 10px 10px 0 0;
+    border: 1px solid #81d4fa; 
+    position: absolute;
+}
+
+#chat-container .MuiBadge-badge{
+    right: -10px;
+    top: 10px;
+    background: green;
+}
+
+#chat-container .MuiAccordionDetails-root{
+    padding: 0;
+}
+
+#friends-chat-list{
+    max-height: 400px;
+    overflow-y: scroll;
+
+    width: 100%;
+
+    padding: 0 10px;
+}
+
+#friends-chat-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.item-friend{
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+}
+.item-friend-username{
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+/*Scroll bar for chat friends*/
+
+/* Track */
+#friends-chat-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+#friends-chat-list::-webkit-scrollbar-thumb {
+    background: #90a4ae; 
+    border-radius: 2px;
+
+}
+
+/* Handle on hover */
+#friends-chat-list::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}

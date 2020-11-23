@@ -1,7 +1,8 @@
 import {createStore} from 'redux';
 
 const initialState = {
-    user:null
+    user:null,
+    friends:[]
 }
 
 const reducer = (state=initialState, action) => {
@@ -9,6 +10,12 @@ const reducer = (state=initialState, action) => {
         return({
             ...state,
             user:action.user
+        });
+    }
+    if(action.type === "SET_FRIENDS"){
+        return({
+            ...state,
+            friends : action.friends
         });
     }
     return state;

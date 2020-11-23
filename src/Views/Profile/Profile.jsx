@@ -23,7 +23,6 @@ const Profile = () => {
                         <PostsUser/>
                     </Grid>
                     <Grid xs={2} item>
-
                     </Grid>
                 </Grid>
             </main>

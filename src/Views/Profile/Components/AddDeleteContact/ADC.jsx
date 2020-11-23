@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 const QUERY_GETUSERBYID = gql`
     query GetUserbyID($userid:ID!){
         getUserbyID(userid:$userid){
+            username
             friends{
                 userid
             }
@@ -31,12 +32,14 @@ const MUTATION_REMOVEFRIEND = gql`
     }
 `;
 
-const AddFriend = ({userid, setFriend}) => {
+const AddFriend = ({userid, setFriend, setFriends, friends, username}) => {
     const [addFriend] = useMutation(MUTATION_ADDFRIEND);
-
     const handleCLick = async () => {
         await addFriend({variables:{userid}});
         setFriend(true);
+
+        friends = friends.concat([{username, userid}]);
+        setFriends(friends);
     }
     return(
         <Button variant="contained" color="primary" onClick={handleCLick}>
@@ -45,12 +48,15 @@ const AddFriend = ({userid, setFriend}) => {
     );
 }
 
-const RemoveFriend = ({userid, setFriend}) => {
+const RemoveFriend = ({userid, setFriend, setFriends, friends}) => {
     const [removeFriend] = useMutation(MUTATION_REMOVEFRIEND);
-
+    
     const handleCLick = async () => {
         await removeFriend({variables:{userid}});
-        setFriend(false)
+        setFriend(false);
+
+        friends = friends.filter(friend => friend.userid !== userid);
+        setFriends(friends);
     }
     return(
         <Button variant="contained" color="secondary" onClick={handleCLick}>
@@ -58,7 +64,7 @@ const RemoveFriend = ({userid, setFriend}) => {
         </Button>
     );
 }
-const ADC = ({user}) => {
+const ADC = ({user, setFriends, friends}) => {
     const {userid} = useParams();
     const {data} = useQuery(QUERY_GETUSERBYID,{variables:{userid}});
    
@@ -73,7 +79,8 @@ const ADC = ({user}) => {
             let idxFriend =  data.getUserbyID.friends.find(friend => friend.userid === user.id);
             if(idxFriend)setFriend(true);
         }
-    },[data]);
+    },[data, user.id]);
+
     if(userid === user.id)return <div>self profile</div>
     if(!data)return <div>loading</div>
 
@@ -81,8 +88,8 @@ const ADC = ({user}) => {
         <div className="ADC-button">
             {
                 friend ?
-                <RemoveFriend userid={userid} setFriend={setFriend}/> : 
-                <AddFriend userid={userid} setFriend={setFriend}/>
+                <RemoveFriend userid={userid} setFriend={setFriend} setFriends={setFriends} friends={friends}/> : 
+                <AddFriend userid={userid} setFriend={setFriend} setFriends={setFriends} friends={friends} username={data.getUserbyID.username}/>
             }
         </div>
     );
@@ -90,8 +97,20 @@ const ADC = ({user}) => {
 
 const stateToProps = state => {
     return({
-        user: state.user
+        user: state.user,
+        friends: state.friends
     });
 }
 
-export default connect(stateToProps, null)(ADC);
+const dispatchToProps = dispatch => {
+    return({
+        setFriends(friends){
+            dispatch({
+                friends,
+                type:'SET_FRIENDS'
+            });
+        }
+    });
+}
+
+export default connect(stateToProps, dispatchToProps)(ADC);
