@@ -45,7 +45,7 @@ const HeaderBar = ({user}) => {
                 onClose={handleClose}
                 >
                 <MenuItem onClick={handleClose}>
-                    <Link to={`profile/${user.username.replace(/\s+/g,'-')}`} >Profile</Link>
+                    <Link to={`profile/${user.id}`} >Profile</Link>
                 </MenuItem>
                 <MenuItem onClick={handleClose}>Settings</MenuItem>
                 <MenuItem onClick={handleClose}>Logout</MenuItem>

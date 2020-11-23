@@ -29,8 +29,11 @@ const Router = ({user, setUser}) => {
     useEffect(()=>{
         let fetchData = async () => {
             if(!token) return;
-            let {data} = await verifyToken({variables:{token}});
-            setUser(data.verifyToken);
+            try{
+                let {data} = await verifyToken({variables:{token}});
+                setUser(data.verifyToken);
+            }catch(err){
+            }
         };
         fetchData();
     },[setUser, token, verifyToken]);
@@ -47,7 +50,7 @@ const Router = ({user, setUser}) => {
                 <Route exact path="/register" >
                     {user ? <Redirect to="/feed" /> : <Register/>}
                 </Route>
-                <Route exact path="/profile/:username">
+                <Route exact path="/profile/:userid">
                     {user ? <Profile/> : <Home/>}
                 </Route>
                 <Route exact path="/feed">

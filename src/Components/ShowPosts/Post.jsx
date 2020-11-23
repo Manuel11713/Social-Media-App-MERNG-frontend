@@ -12,7 +12,6 @@ import IconLike from './IconLike';
 
 const Post = ({post, user}) => {
     const {body, comments, imgProfile, imgPost, createdAt, likeCount, likes, username } = post;
-    console.log(likes)
     const postid = post.id;
 
     return(

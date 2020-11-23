@@ -1,6 +1,6 @@
 import React from 'react';
 import { gql, useQuery } from '@apollo/client';
-
+import {useParams} from 'react-router-dom';
 import SpinnerLoading from '../../../../Components/SpinnerLoading/SpinnerLoading';
 import ShowPosts from '../../../../Components/ShowPosts/ShowPosts';
 
@@ -8,8 +8,8 @@ import './PostsUser.css'
 
 
 const GETPOSTS_QUERY = gql`
-    query {
-        getPosts{
+    query GetPosts($userid:ID!){
+        getPosts(userid:$userid){
             id
             body
             createdAt
@@ -34,8 +34,10 @@ const GETPOSTS_QUERY = gql`
 `;
 
 const PostsUser = () => {
+    const {userid} = useParams();
 
-    const { loading, data } = useQuery(GETPOSTS_QUERY);
+    const { loading, data } = useQuery(GETPOSTS_QUERY,{variables:{userid}});
+    if(!data)return <div></div>
     let posts = data?.getPosts;
     return(
         <div className="posts-user-container">

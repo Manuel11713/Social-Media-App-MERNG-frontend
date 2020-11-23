@@ -1,5 +1,5 @@
 import React,{useState, useEffect, forwardRef} from 'react';
-
+import {Link} from 'react-router-dom';
 import {InputBase, Typography} from '@material-ui/core';
 
 import {gql, useMutation} from '@apollo/client';
@@ -24,9 +24,11 @@ const ListUsers = forwardRef( ({users},ref) => {
         <div ref={ref} className="users-list" >
             {users.map(user => {
                 return(
-                    <div className="item-user" key={user.id}>
-                        <Typography variant="body1">{user.username}</Typography>
-                    </div>
+                    <Link to={`/profile/${user.id}`} key={user.id}>
+                        <div className="item-user" >
+                            <Typography variant="body1">{user.username}</Typography>
+                        </div>
+                    </Link>
                 );
             })}
         </div>
