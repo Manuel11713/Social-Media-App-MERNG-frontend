@@ -25,3 +25,10 @@ username : Dick Grayson
 email: robin@email.com
 password: Nighwing
 
+#### Some Captures About Project
+![screenshot1](assets/sc1.png)
+![screenshot2](assets/sc2.png)
+![screenshot3](assets/sc3.png)
+![screenshot4](assets/sc4.png)
+![screenshot5](assets/sc5.png)
+![screenshot6](assets/sc6.png)

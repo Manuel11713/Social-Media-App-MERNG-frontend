@@ -4,10 +4,12 @@ import moment from 'moment';
 import {connect} from 'react-redux';
 
 
-import {Avatar,Button, Card, CardHeader, CardMedia, CardActions, IconButton, CardContent, Typography} from '@material-ui/core';
-import {AccountCircle, MoreVert, Favorite, Share} from '@material-ui/icons';
+import {Avatar, Card, CardHeader, CardMedia, CardActions, IconButton, CardContent, Typography} from '@material-ui/core';
+import {AccountCircle, MoreVert,  Share} from '@material-ui/icons';
 
 import IconLike from './IconLike';
+
+import './Post.css';
 
 
 const Post = ({post, user}) => {

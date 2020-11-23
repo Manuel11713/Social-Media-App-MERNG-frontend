@@ -1,14 +1,15 @@
-import React from 'react';
-import { gql, useQuery } from '@apollo/client';
+import React,{useState} from 'react';
+import { gql, useMutation } from '@apollo/client';
 import {useParams} from 'react-router-dom';
 import SpinnerLoading from '../../../../Components/SpinnerLoading/SpinnerLoading';
 import ShowPosts from '../../../../Components/ShowPosts/ShowPosts';
 
 import './PostsUser.css'
+import { useEffect } from 'react';
 
 
-const GETPOSTS_QUERY = gql`
-    query GetPosts($userid:ID!){
+const GETPOSTS_MUTATION = gql`
+    mutation GetPosts($userid:ID!){
         getPosts(userid:$userid){
             id
             body
@@ -35,13 +36,22 @@ const GETPOSTS_QUERY = gql`
 
 const PostsUser = () => {
     const {userid} = useParams();
+    const [data, setData] = useState(null);
+    const [getPosts] = useMutation(GETPOSTS_MUTATION);
 
-    const { loading, data } = useQuery(GETPOSTS_QUERY,{variables:{userid}});
+    useEffect(()=>{
+        let fetch = async () => {
+            let {data} = await getPosts({variables:{userid}});
+            setData(data);
+        }
+        fetch();
+    });
+
     if(!data)return <div></div>
     let posts = data?.getPosts;
     return(
         <div className="posts-user-container">
-            {loading ? <SpinnerLoading /> : <ShowPosts posts={posts} />}
+            {!data ? <SpinnerLoading /> : <ShowPosts posts={posts} />}
         </div>
     );
 }

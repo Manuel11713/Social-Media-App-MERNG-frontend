@@ -6,7 +6,7 @@
 
     border-radius: 10px 10px 0 0;
     border: 1px solid #81d4fa; 
-    position: absolute;
+    position: fixed;
 }
 
 #chat-container .MuiBadge-badge{

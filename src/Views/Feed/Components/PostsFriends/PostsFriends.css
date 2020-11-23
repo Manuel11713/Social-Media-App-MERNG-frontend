@@ -1,0 +1,8 @@
+#posts-friends-container{
+    display: flex;
+    justify-content: center;
+}
+#posts-friends-lists{
+    margin-top: 20px;
+    width: 800px;
+}
