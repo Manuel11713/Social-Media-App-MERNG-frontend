@@ -45,7 +45,7 @@ const PostsUser = () => {
             setData(data);
         }
         fetch();
-    });
+    },[userid]);
 
     if(!data)return <div></div>
     let posts = data?.getPosts;

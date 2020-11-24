@@ -1,0 +1,14 @@
+.MuiCard-root{
+    box-shadow: 1px 1px 2px 2px rgb(63, 81, 181, 0.4) !important;
+}
+
+.show-comments{
+    display: block;
+}
+.hidde-comments{
+    display: none;
+}
+
+.active-comments{
+    color: #2962ff !important;
+}

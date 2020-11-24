@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './ShowPosts.css';
-import Post from './Post';
+import Post from './Components/Post/Post';
 
 
 const ShowPosts = ({posts}) => {
