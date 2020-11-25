@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -12,6 +12,7 @@ import './HeaderBar.css';
 
 const HeaderBar = ({user}) => {
     const [anchorMenu, setAnchorMenu] = useState(null);
+    const history = useHistory();
 
     const handleClick = (event) => {
       setAnchorMenu(event.currentTarget);
@@ -20,6 +21,10 @@ const HeaderBar = ({user}) => {
     const handleClose = () => {
       setAnchorMenu(null);
     };
+    const logout = () => {
+        localStorage.removeItem('token');
+        window.location = '/'
+    }
     
     return(
         <header>
@@ -48,7 +53,7 @@ const HeaderBar = ({user}) => {
                     <Link to={`profile/${user.id}`} >Profile</Link>
                 </MenuItem>
                 <MenuItem onClick={handleClose}>Settings</MenuItem>
-                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                <MenuItem onClick={logout}>Logout</MenuItem>
             </Menu>
         </header>
     );
