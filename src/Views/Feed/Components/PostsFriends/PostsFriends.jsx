@@ -42,7 +42,7 @@ const PostsFriends = ({friends}) => {
     
     useEffect(()=>{
         let fetchData = async () => {
-            if(friends.length===0)return;
+            if(!friends || friends.length===0)return;
             let promises = [];
 
             for(let friend of friends){

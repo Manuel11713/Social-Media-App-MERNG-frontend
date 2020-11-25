@@ -2,7 +2,8 @@ import {createStore} from 'redux';
 
 const initialState = {
     user:null,
-    friends:[]
+    friends:null,
+    chats:[]
 }
 
 const reducer = (state=initialState, action) => {

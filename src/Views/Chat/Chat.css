@@ -1,0 +1,16 @@
+#messages-container{
+    flex-direction: column;
+    padding: 20px;
+
+    height:  85%;
+}
+
+#message-container-card{
+    height: 100%;
+}
+.grid-container-chat{
+    height: 100%;
+}
+.grid-item-messages{
+    height: 100%;
+}

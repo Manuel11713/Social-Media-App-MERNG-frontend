@@ -1,5 +1,6 @@
 import React, { useEffect }  from 'react';
 import {gql, useQuery} from '@apollo/client';
+import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import {Accordion, AccordionSummary, AccordionDetails, Badge, Typography} from '@material-ui/core';
@@ -18,17 +19,19 @@ const QUERY_GETUSERBYID = gql`
 `;
 
 const ListFriends = ({friends}) => {
+    if(!friends)return <div>No friends yet</div>
     return(
+        
         <div id="friends-chat-list">
             {friends.map(friend => {
                 const {username, userid} = friend;
                 return(
-                    <div className="item-friend" key={userid}>
+                    <Link to="/chat" className="item-friend" key={userid}>
                         <AccountCircleIcon style={{color:'#2196f3'}}/>
                         <span className="item-friend-username">
                             {username}
                         </span>
-                    </div>
+                    </Link>
                 );
             })}
         </div>
@@ -49,7 +52,7 @@ const Chat = ({user, friends, setFriends}) => {
             <AccordionSummary>
                 <Typography id="title-chat" variant="h6">
                     <Badge 
-                        badgeContent={friends.length} 
+                        badgeContent={friends?friends.length:0} 
                         color="primary"
                     >
                         Friends Active

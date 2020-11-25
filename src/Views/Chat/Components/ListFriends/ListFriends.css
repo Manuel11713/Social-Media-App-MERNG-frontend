@@ -1,0 +1,18 @@
+.item-friend-chat{
+    padding: 20px;
+    border-bottom: 1px solid #cfd8dc !important;
+
+    display: flex;
+    cursor: pointer;
+}
+
+.item-friend-chat-icon{
+    font-size: 35px;
+    color: #2962ff;
+
+}
+
+.item-friend-chat-username{
+    padding-left: 20px;
+    align-self: center;
+}

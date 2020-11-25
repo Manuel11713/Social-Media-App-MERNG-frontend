@@ -54,6 +54,7 @@ const Comments = ({comments, postid}) => {
                     className="input-comment"
                     placeholder="Write a comment"
                     multiline
+                    value={bodyComment}
                     onChange={(e)=>setBodyComment(e.currentTarget.value)}
                 />  
                 <IconButton className="send-icon" onClick={makePost}>

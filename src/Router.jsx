@@ -10,6 +10,8 @@ import Register from './Views/Register/Register';
 import Login from './Views/Login/Login';
 import Feed from './Views/Feed/Feed';
 import Profile from './Views/Profile/Profile';
+import Chat from './Views/Chat/Chat';
+
 
 const VERIFYTOKEN_MUTATION = gql`
     mutation VerifyToken($token:String){
@@ -50,6 +52,11 @@ const Router = ({user, setUser}) => {
                 <Route exact path="/register" >
                     {user ? <Redirect to="/feed" /> : <Register/>}
                 </Route>
+                
+                <Route exact path="/chat">
+                    {user ? <Chat/> : <Home/>}
+                </Route>
+
                 <Route exact path="/profile/:userid">
                     {user ? <Profile/> : <Home/>}
                 </Route>
